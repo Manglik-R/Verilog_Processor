@@ -1,0 +1,7 @@
+xst -intstyle ise -ifn "/media/mraghav22/RAGHAV/CS220Labs/Lab_10A/MIPS/MIPS.xst" -ofn "/media/mraghav22/RAGHAV/CS220Labs/Lab_10A/MIPS/MIPS.syr" 
+xst -intstyle ise -ifn "/media/mraghav22/RAGHAV/CS220Labs/Lab_10A/MIPS/MIPS.xst" -ofn "/media/mraghav22/RAGHAV/CS220Labs/Lab_10A/MIPS/MIPS.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc MIPS.ucf -p xc3s500e-fg320-4 MIPS.ngc MIPS.ngd  
+map -intstyle ise -p xc3s500e-fg320-4 -cm area -ir off -pr off -c 100 -o MIPS_map.ncd MIPS.ngd MIPS.pcf 
+par -w -intstyle ise -ol high -t 1 MIPS_map.ncd MIPS.ncd MIPS.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml MIPS.twx MIPS.ncd -o MIPS.twr MIPS.pcf -ucf MIPS.ucf 
+bitgen -intstyle ise -f MIPS.ut MIPS.ncd 

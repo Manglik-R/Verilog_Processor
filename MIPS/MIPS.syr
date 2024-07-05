@@ -1,0 +1,536 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.05 secs
+ 
+--> 
+Reading design: MIPS.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "MIPS.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "MIPS"
+Output Format                      : NGC
+Target Device                      : xc3s500e-4-fg320
+
+---- Source Options
+Top Module Name                    : MIPS
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "MIPS.v" in library work
+Module <MIPS> compiled
+No errors in compilation
+Analysis of file <"MIPS.prj"> succeeded.
+ 
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for module <MIPS> in library <work>.
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing top module <MIPS>.
+INFO:Xst:1433 - Contents of array <i_cache> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+INFO:Xst:1433 - Contents of array <d_cache> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+INFO:Xst:1433 - Contents of array <d_cache> may be accessed with an index that exceeds the array size. This could cause simulation mismatch.
+WARNING:Xst:2323 - "MIPS.v" line 243: Parameter 2 is not constant in call of system task $display.
+"MIPS.v" line 243: $display : Output: %d
+Module <MIPS> is correct for synthesis.
+ 
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <MIPS>.
+    Related source file is "MIPS.v".
+WARNING:Xst:1781 - Signal <i_cache> is used but never assigned. Tied to default value.
+WARNING:Xst:1781 - Signal <d_cache> is used but never assigned. Tied to default value.
+WARNING:Xst:646 - Signal <MemoryAddress<7:4>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <Instruction<10:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Register <jump> equivalent to <immediate> has been removed
+    Found finite state machine <FSM_0> for signal <state>.
+    -----------------------------------------------------------------------
+    | States             | 7                                              |
+    | Transitions        | 17                                             |
+    | Inputs             | 10                                             |
+    | Outputs            | 9                                              |
+    | Clock              | clk                       (rising_edge)        |
+    | Power Up State     | 000                                            |
+    | Encoding           | automatic                                      |
+    | Implementation     | LUT                                            |
+    -----------------------------------------------------------------------
+    Found 14x32-bit ROM for signal <$varindex0000> created at line 120.
+    Found 11x8-bit ROM for signal <$COND_3>.
+    Found 8-bit register for signal <leds>.
+    Found 8-bit register for signal <ExeResult>.
+    Found 8-bit adder for signal <ExeResult$addsub0000> created at line 157.
+    Found 8-bit comparator less for signal <ExeResult$cmp_lt0000> created at line 146.
+    Found 6-bit register for signal <func>.
+    Found 8-bit register for signal <immediate>.
+    Found 32-bit register for signal <Instruction>.
+    Found 8-bit register for signal <MemoryAddress>.
+    Found 8-bit adder for signal <MemoryAddress$add0000> created at line 185.
+    Found 6-bit register for signal <opcode>.
+    Found 8-bit register for signal <PC>.
+    Found 8-bit adder for signal <PC$add0000> created at line 152.
+    Found 8-bit comparator equal for signal <PC$cmp_eq0000> created at line 175.
+    Found 8-bit comparator not equal for signal <PC$cmp_ne0003> created at line 191.
+    Found 8-bit adder for signal <PC$share0000>.
+    Found 5-bit register for signal <rd>.
+    Found 256-bit register for signal <RegisterFile>.
+    Found 5-bit register for signal <rs>.
+    Found 5-bit register for signal <rt>.
+    Found 8-bit register for signal <sourceRegister1>.
+    Found 8-bit register for signal <sourceRegister2>.
+    Found 8-bit comparator less for signal <state$cmp_lt0000> created at line 233.
+INFO:Xst:738 - HDL ADVISOR - 256 flip-flops were inferred for signal <RegisterFile>. You may be trying to describe a RAM in a way that is incompatible with block and distributed RAM resources available on Xilinx devices, or with a specific template that is not supported. Please review the Xilinx resources documentation and the XST user manual for coding guidelines. Taking advantage of RAM resources will lead to improved device usage and reduced synthesis time.
+    Summary:
+	inferred   1 Finite State Machine(s).
+	inferred   2 ROM(s).
+	inferred 371 D-type flip-flop(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred   4 Comparator(s).
+	inferred  16 Multiplexer(s).
+Unit <MIPS> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 2
+ 11x8-bit ROM                                          : 1
+ 14x32-bit ROM                                         : 1
+# Adders/Subtractors                                   : 4
+ 8-bit adder                                           : 4
+# Registers                                            : 45
+ 32-bit register                                       : 1
+ 5-bit register                                        : 3
+ 6-bit register                                        : 2
+ 8-bit register                                        : 39
+# Comparators                                          : 4
+ 8-bit comparator equal                                : 1
+ 8-bit comparator less                                 : 2
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 2
+ 8-bit 32-to-1 multiplexer                             : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <state/FSM> on signal <state[1:7]> with one-hot encoding.
+-------------------
+ State | Encoding
+-------------------
+ 000   | 0000001
+ 001   | 0000010
+ 010   | 0000100
+ 011   | 0001000
+ 100   | 0010000
+ 101   | 0100000
+ 110   | 1000000
+-------------------
+WARNING:Xst:1293 - FF/Latch <RegisterFile_0_0> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_1> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_2> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_3> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_4> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_5> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_6> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_7> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <Instruction_8> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <Instruction_9> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <Instruction_10> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_4> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_5> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_6> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_7> of sequential type is unconnected in block <MIPS>.
+
+Synthesizing (advanced) Unit <MIPS>.
+INFO:Xst:3034 - In order to maximize performance and save block RAM resources, the small ROM <Mrom__COND_3> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+INFO:Xst:3034 - In order to maximize performance and save block RAM resources, the small ROM <Mrom__varindex0000> will be implemented on LUT. If you want to force its implementation on block, use option/constraint rom_style.
+Unit <MIPS> synthesized (advanced).
+WARNING:Xst:2677 - Node <Instruction_8> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <Instruction_9> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <Instruction_10> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_4> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_5> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_6> of sequential type is unconnected in block <MIPS>.
+WARNING:Xst:2677 - Node <MemoryAddress_7> of sequential type is unconnected in block <MIPS>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# FSMs                                                 : 1
+# ROMs                                                 : 2
+ 11x8-bit ROM                                          : 1
+ 14x32-bit ROM                                         : 1
+# Adders/Subtractors                                   : 4
+ 8-bit adder                                           : 4
+# Registers                                            : 364
+ Flip-Flops                                            : 364
+# Comparators                                          : 4
+ 8-bit comparator equal                                : 1
+ 8-bit comparator less                                 : 2
+ 8-bit comparator not equal                            : 1
+# Multiplexers                                         : 16
+ 1-bit 32-to-1 multiplexer                             : 16
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1293 - FF/Latch <RegisterFile_0_0> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_1> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_2> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_3> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_4> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_5> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_6> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_0_7> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <func_0> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_0> 
+INFO:Xst:2261 - The FF/Latch <func_1> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_1> 
+INFO:Xst:2261 - The FF/Latch <func_2> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_2> 
+INFO:Xst:2261 - The FF/Latch <func_3> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_3> 
+INFO:Xst:2261 - The FF/Latch <func_4> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_4> 
+INFO:Xst:2261 - The FF/Latch <func_5> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <immediate_5> 
+WARNING:Xst:1710 - FF/Latch <Instruction_19> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Instruction_20> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <Instruction_31> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <opcode_5> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rt_3> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <rt_4> (without init value) has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <Instruction_4> in Unit <MIPS> is equivalent to the following 5 FFs/Latches, which will be removed : <Instruction_6> <Instruction_7> <Instruction_11> <Instruction_14> <Instruction_15> 
+INFO:Xst:2261 - The FF/Latch <Instruction_24> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <Instruction_25> 
+INFO:Xst:2261 - The FF/Latch <rd_0> in Unit <MIPS> is equivalent to the following 5 FFs/Latches, which will be removed : <rd_3> <rd_4> <func_4> <immediate_6> <immediate_7> 
+INFO:Xst:2261 - The FF/Latch <rs_3> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <rs_4> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_0> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_0> <RegisterFile_28_0> <RegisterFile_30_0> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_1> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_1> <RegisterFile_28_1> <RegisterFile_30_1> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_2> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_2> <RegisterFile_28_2> <RegisterFile_30_2> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_3> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_3> <RegisterFile_28_3> <RegisterFile_30_3> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_4> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_4> <RegisterFile_28_4> <RegisterFile_30_4> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_5> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_5> <RegisterFile_28_5> <RegisterFile_30_5> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_6> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_6> <RegisterFile_28_6> <RegisterFile_30_6> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_24_7> in Unit <MIPS> is equivalent to the following 3 FFs/Latches, which will be removed : <RegisterFile_26_7> <RegisterFile_28_7> <RegisterFile_30_7> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_0> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_0> <RegisterFile_10_0> <RegisterFile_11_0> <RegisterFile_14_0> <RegisterFile_12_0> <RegisterFile_13_0> <RegisterFile_15_0> <RegisterFile_16_0> <RegisterFile_17_0> <RegisterFile_18_0> <RegisterFile_19_0> <RegisterFile_20_0> <RegisterFile_21_0> <RegisterFile_22_0> <RegisterFile_23_0> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_1> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_1> <RegisterFile_10_1> <RegisterFile_11_1> <RegisterFile_14_1> <RegisterFile_12_1> <RegisterFile_13_1> <RegisterFile_15_1> <RegisterFile_16_1> <RegisterFile_17_1> <RegisterFile_18_1> <RegisterFile_19_1> <RegisterFile_20_1> <RegisterFile_21_1> <RegisterFile_22_1> <RegisterFile_23_1> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_2> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_2> <RegisterFile_10_2> <RegisterFile_11_2> <RegisterFile_14_2> <RegisterFile_12_2> <RegisterFile_13_2> <RegisterFile_15_2> <RegisterFile_16_2> <RegisterFile_17_2> <RegisterFile_18_2> <RegisterFile_19_2> <RegisterFile_20_2> <RegisterFile_21_2> <RegisterFile_22_2> <RegisterFile_23_2> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_3> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_3> <RegisterFile_10_3> <RegisterFile_11_3> <RegisterFile_14_3> <RegisterFile_12_3> <RegisterFile_13_3> <RegisterFile_15_3> <RegisterFile_16_3> <RegisterFile_17_3> <RegisterFile_18_3> <RegisterFile_19_3> <RegisterFile_20_3> <RegisterFile_21_3> <RegisterFile_22_3> <RegisterFile_23_3> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_4> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_4> <RegisterFile_10_4> <RegisterFile_11_4> <RegisterFile_14_4> <RegisterFile_12_4> <RegisterFile_13_4> <RegisterFile_15_4> <RegisterFile_16_4> <RegisterFile_17_4> <RegisterFile_18_4> <RegisterFile_19_4> <RegisterFile_20_4> <RegisterFile_21_4> <RegisterFile_22_4> <RegisterFile_23_4> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_5> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_5> <RegisterFile_10_5> <RegisterFile_11_5> <RegisterFile_14_5> <RegisterFile_12_5> <RegisterFile_13_5> <RegisterFile_15_5> <RegisterFile_16_5> <RegisterFile_17_5> <RegisterFile_18_5> <RegisterFile_19_5> <RegisterFile_20_5> <RegisterFile_21_5> <RegisterFile_22_5> <RegisterFile_23_5> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_6> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_6> <RegisterFile_10_6> <RegisterFile_11_6> <RegisterFile_14_6> <RegisterFile_12_6> <RegisterFile_13_6> <RegisterFile_15_6> <RegisterFile_16_6> <RegisterFile_17_6> <RegisterFile_18_6> <RegisterFile_19_6> <RegisterFile_20_6> <RegisterFile_21_6> <RegisterFile_22_6> <RegisterFile_23_6> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_7> in Unit <MIPS> is equivalent to the following 15 FFs/Latches, which will be removed : <RegisterFile_9_7> <RegisterFile_10_7> <RegisterFile_11_7> <RegisterFile_14_7> <RegisterFile_12_7> <RegisterFile_13_7> <RegisterFile_15_7> <RegisterFile_16_7> <RegisterFile_17_7> <RegisterFile_18_7> <RegisterFile_19_7> <RegisterFile_20_7> <RegisterFile_21_7> <RegisterFile_22_7> <RegisterFile_23_7> 
+
+Optimizing unit <MIPS> ...
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_0> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_0> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_1> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_1> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_2> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_2> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_3> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_3> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_4> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_4> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_5> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_5> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_6> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_6> 
+INFO:Xst:2261 - The FF/Latch <RegisterFile_8_7> in Unit <MIPS> is equivalent to the following FF/Latch, which will be removed : <RegisterFile_24_7> 
+WARNING:Xst:1293 - FF/Latch <RegisterFile_8_0> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_1> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_2> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_3> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_4> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_5> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_6> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_7> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <RegisterFile_8_0> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_1> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_2> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_3> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_4> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_5> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_6> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <RegisterFile_8_7> has a constant value of 0 in block <MIPS>. This FF/Latch will be trimmed during the optimization process.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block MIPS, actual ratio is 4.
+FlipFlop opcode_0 has been replicated 1 time(s)
+FlipFlop opcode_1 has been replicated 1 time(s)
+FlipFlop opcode_2 has been replicated 1 time(s)
+FlipFlop opcode_3 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 183
+ Flip-Flops                                            : 183
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : MIPS.ngr
+Top Level Output File Name         : MIPS
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 9
+
+Cell Usage :
+# BELS                             : 518
+#      GND                         : 1
+#      LUT2                        : 62
+#      LUT2_L                      : 3
+#      LUT3                        : 120
+#      LUT3_D                      : 11
+#      LUT3_L                      : 7
+#      LUT4                        : 119
+#      LUT4_D                      : 15
+#      LUT4_L                      : 13
+#      MUXCY                       : 29
+#      MUXF5                       : 65
+#      MUXF6                       : 24
+#      MUXF7                       : 16
+#      MUXF8                       : 8
+#      VCC                         : 1
+#      XORCY                       : 24
+# FlipFlops/Latches                : 183
+#      FD                          : 5
+#      FDE                         : 160
+#      FDS                         : 18
+# Clock Buffers                    : 1
+#      BUFGP                       : 1
+# IO Buffers                       : 8
+#      OBUF                        : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-4 
+
+ Number of Slices:                      235  out of   4656     5%  
+ Number of Slice Flip Flops:            183  out of   9312     1%  
+ Number of 4 input LUTs:                350  out of   9312     3%  
+ Number of IOs:                           9
+ Number of bonded IOBs:                   9  out of    232     3%  
+ Number of GCLKs:                         1  out of     24     4%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk                                | BUFGP                  | 183   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -4
+
+   Minimum period: 8.936ns (Maximum Frequency: 111.907MHz)
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: 4.283ns
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk'
+  Clock period: 8.936ns (frequency: 111.907MHz)
+  Total number of paths / destination ports: 7804 / 361
+-------------------------------------------------------------------------
+Delay:               8.936ns (Levels of Logic = 5)
+  Source:            opcode_4 (FF)
+  Destination:       RegisterFile_1_2 (FF)
+  Source Clock:      clk rising
+  Destination Clock: clk rising
+
+  Data Path: opcode_4 to RegisterFile_1_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q             18   0.591   1.147  opcode_4 (opcode_4)
+     LUT3_D:I1->O          5   0.704   0.668  state_cmp_eq000011 (N50)
+     LUT3:I2->O           24   0.704   1.256  state_cmp_eq00001 (state_cmp_eq0000)
+     LUT4:I3->O            9   0.704   0.824  RegisterFile_0_mux0000<0>1 (N5)
+     LUT4_D:I3->O          4   0.704   0.622  RegisterFile_0_mux0000<2>11 (N12)
+     LUT3:I2->O           10   0.704   0.000  RegisterFile_0_mux0000<6>1 (RegisterFile_0_mux0000<6>)
+     FDE:D                     0.308          RegisterFile_1_6
+    ----------------------------------------
+    Total                      8.936ns (4.419ns logic, 4.517ns route)
+                                       (49.5% logic, 50.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 8 / 8
+-------------------------------------------------------------------------
+Offset:              4.283ns (Levels of Logic = 1)
+  Source:            leds_7 (FF)
+  Destination:       leds<7> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: leds_7 to leds<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDE:C->Q              1   0.591   0.420  leds_7 (leds_7)
+     OBUF:I->O                 3.272          leds_7_OBUF (leds<7>)
+    ----------------------------------------
+    Total                      4.283ns (3.863ns logic, 0.420ns route)
+                                       (90.2% logic, 9.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 13.00 secs
+Total CPU time to Xst completion: 9.70 secs
+ 
+--> 
+
+
+Total memory usage is 523412 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   57 (   0 filtered)
+Number of infos    :   41 (   0 filtered)
+
